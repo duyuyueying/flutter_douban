@@ -16,6 +16,7 @@ class DBColors {
   static const Color border2Value = Color(0xffb2b2b2);
   static const Color bgValue = Color(0xffededed);
   static const Color tagBgValue = Color(0xfff7f7f7);
+  static const Color writeValue = Color(0xffffffff);
 }
 
 // 文本样式
@@ -24,7 +25,7 @@ class DBTextStyle {
   // static const bigTextSize = 32;
   static const normalTextSize = 36.0;
   static const middleTextSize = 32.0;
-  static const smallTextSize = 28.0;
+  static const smallTextSize = 14.0;
   static const minTextSize = 20.0;
 
   static const smallGreyLightText = TextStyle(
