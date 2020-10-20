@@ -13,6 +13,7 @@ class DBColors {
   static const Color textGreyLightValue = Color(0xffc0c0c0);
   static const Color borderValue = Color(0xffcccccc);
   static const Color border1Value = Color(0xffe0e0e0);
+  static const Color border2Value = Color(0xffb2b2b2);
   static const Color bgValue = Color(0xffededed);
   static const Color tagBgValue = Color(0xfff7f7f7);
 }
