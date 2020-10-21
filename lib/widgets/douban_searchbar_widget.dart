@@ -5,6 +5,7 @@ class DoubanSearchBarWidget extends StatefulWidget {
   // 是否可以输入
   final bool searchAble;
   final double toolBarHeight;
+  final Color backgroundColor;
   // placeholder
   final String hintText;
   final Widget searchBoxRight;
@@ -16,8 +17,9 @@ class DoubanSearchBarWidget extends StatefulWidget {
 
   const DoubanSearchBarWidget(
       {Key key,
-      this.searchAble,
+      this.searchAble = true,
       this.toolBarHeight = 35.0,
+      this.backgroundColor = DBColors.writeValue,
       this.hintText,
       this.searchBoxRight,
       this.searchRight,
@@ -31,35 +33,54 @@ class DoubanSearchBarWidget extends StatefulWidget {
 }
 
 class _DoubanSearchBarWidgetState extends State<DoubanSearchBarWidget> {
+  _searchBarTap() {
+    if (widget.searchAble) {
+      return;
+    }
+    print('click====');
+    widget.searchTapClick?.call();
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget searchBox = Container(
       padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-      margin: EdgeInsets.only(right: 20.0),
+      margin: EdgeInsets.only(right: 5.0),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30), color: DBColors.writeValue),
-      child: Row(
-        children: <Widget>[
-          Icon(Icons.search, size: 23, color: DBColors.textGreyValue,),
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.only(right: 5, left: 5),
-              child: TextField(
-                decoration: InputDecoration(
-                  isDense: true,
-                  contentPadding: EdgeInsets.zero,
-                  // icon: Icon(Icons.search, size: 23, color: DBColors.textGreyValue,),
-                  border: InputBorder.none,
-                  hintText: widget.hintText,
-                  hintStyle: DBTextStyle.smallGreyLightText,
+        borderRadius: BorderRadius.circular(30),
+        color: widget.backgroundColor ,
+      ),
+      child: GestureDetector(
+        onTap: _searchBarTap,
+        child: Row(
+          children: <Widget>[
+            Icon(
+              Icons.search,
+              size: 23,
+              color: DBColors.textGreyValue,
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(right: 5, left: 5),
+                child: TextField(
+                  decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.zero,
+                    // icon: Icon(Icons.search, size: 23, color: DBColors.textGreyValue,),
+                    border: InputBorder.none,
+                    hintText: widget.hintText,
+                    hintStyle: DBTextStyle.smallGreyLightText,
+                  ),
+                  enabled: widget.searchAble,
                 ),
               ),
             ),
-          ),
-          widget.searchBoxRight ?? Container()
-        ],
+            widget.searchBoxRight ?? Container()
+          ],
+        ),
       ),
     );
+
     if (widget.searchRight != null) {
       searchBox = Row(
         children: <Widget>[Expanded(child: searchBox), widget.searchRight],

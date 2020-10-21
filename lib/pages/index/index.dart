@@ -6,6 +6,7 @@ import 'package:flutter_douban/pages/store/store.dart';
 import 'package:flutter_douban/pages/user_center/user_center.dart';
 import 'package:flutter_douban/pages/works/works.dart';
 import 'package:flutter_douban/widgets/douban_tabbar_widget1.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IndexPage extends StatefulWidget {
   static final String sName = "index";
@@ -32,6 +33,8 @@ class _IndexPageState extends State<IndexPage> {
   ];
   @override
   Widget build(BuildContext context) {
+     ScreenUtil.init(context,
+        designSize: Size(750, 1334), allowFontScaling: false);
     return DoubanTabbarWidget(
         tabItems: tabs,
         tabViews: <Widget>[

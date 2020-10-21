@@ -2,6 +2,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
 class DBColors {
   static const Color primaryValue = Color(0xff42bd56);
@@ -23,36 +24,35 @@ class DBColors {
 class DBTextStyle {
   // static const biggerTextSize = 32;
   // static const bigTextSize = 32;
-  static const normalTextSize = 36.0;
-  static const middleTextSize = 32.0;
-  static const smallTextSize = 14.0;
-  static const minTextSize = 20.0;
+  static final normalTextSize = ScreenUtil().setSp(36.0);
+  static final middleTextSize = ScreenUtil().setSp(32.0);
+  static final smallTextSize = ScreenUtil().setSp(28.0);
+  static final minTextSize = ScreenUtil().setSp(20.0);
 
-  static const smallGreyLightText = TextStyle(
+  static final smallGreyLightText = TextStyle(
     color: DBColors.textGreyLightValue,
     fontSize: smallTextSize,
   );
-  static const smallDeepGreyText = TextStyle(
+  static final smallDeepGreyText = TextStyle(
     color: DBColors.textDeepGreyValue,
     fontSize: smallTextSize,
   );
-  static const nomalSubText = TextStyle(
+  static final nomalSubText = TextStyle(
     color: DBColors.subTextValue,
     fontSize: normalTextSize
   );
-  static const nomalBoldText = TextStyle(
+  static final nomalBoldText = TextStyle(
     color: DBColors.textValue,
     fontSize: normalTextSize,
     fontWeight: FontWeight.bold
   );
-  static const middleGreyText = TextStyle(
+  static final middleGreyText = TextStyle(
     fontSize: middleTextSize,
     color: DBColors.textGreyValue,
   );
-  static const middlePrimayBoldText = TextStyle(
+  static final middlePrimayBoldText = TextStyle(
     fontSize: middleTextSize,
     fontWeight: FontWeight.bold,
     color: DBColors.textPrimaryValue,
   );
-  
 }
