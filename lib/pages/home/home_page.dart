@@ -4,6 +4,7 @@ import 'package:flutter_douban/components/search_bar.dart';
 import 'package:flutter_douban/mock/recommend_mock.dart';
 import 'package:flutter_douban/model/data_result.dart';
 import 'package:flutter_douban/model/recommendModel.dart';
+import 'package:flutter_douban/pages/home/widget/list_item.dart';
 import 'package:flutter_douban/widgets/douban_tabbar_widget2.dart';
 import 'package:flutter_douban/widgets/pull/douban_list_state.dart';
 import 'package:flutter_douban/widgets/pull/douban_pull_load_widget.dart';
@@ -60,12 +61,7 @@ class _HomePageState extends State<HomePage>
   }
 
   _renderItem1(int index, dynamic item) {
-    return Container(
-      child: Text(
-        index.toString(),
-      ),
-      color: Colors.red,
-    );
+    return ListItem(item: dataList[index]);
   }
 
   _renderItem2(int index, dynamic item) {

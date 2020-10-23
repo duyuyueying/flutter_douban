@@ -18,10 +18,12 @@ class RecommendMock{
           // 3张图片样式
           'https://via.placeholder.com/500',
           'https://via.placeholder.com/300',
-          'https://via.placeholder.com/900'
+          'https://via.placeholder.com/900',
+          'https://via.placeholder.com/900',
+          'https://via.placeholder.com/900',
         ],
         "content": '内容日荣，内容日荣，内容日荣，内容日荣，内容日荣，内容日荣，内容日荣，内容日荣',
-        "title": '',
+        "title": '我是标题',
         "likeNum": '649',
         "commentNum": '19',
         "transmitNum": '43',

@@ -27,8 +27,13 @@ class DBTextStyle {
   static final normalTextSize = ScreenUtil().setSp(36.0);
   static final middleTextSize = ScreenUtil().setSp(32.0);
   static final smallTextSize = ScreenUtil().setSp(28.0);
+  static final smallerTextSize = ScreenUtil().setSp(24.0);
   static final minTextSize = ScreenUtil().setSp(20.0);
 
+  static final minGreyText = TextStyle(
+    fontSize: minTextSize,
+    color: DBColors.textGreyValue,
+  );
   static final smallGreyLightText = TextStyle(
     color: DBColors.textGreyLightValue,
     fontSize: smallTextSize,
@@ -37,13 +42,21 @@ class DBTextStyle {
     color: DBColors.textDeepGreyValue,
     fontSize: smallTextSize,
   );
-  static final nomalSubText = TextStyle(
-    color: DBColors.subTextValue,
-    fontSize: normalTextSize
+  // static final smallPrimayText = TextStyle(
+  //   color: DBColors.primaryValue,
+  //   fontSize: smallTextSize,
+  // );
+  static final smallerPrimayText = TextStyle(
+    color: DBColors.primaryValue,
+    fontSize: smallerTextSize,
   );
-  static final nomalBoldText = TextStyle(
+  static final middleSubText = TextStyle(
+    color: DBColors.subTextValue,
+    fontSize: middleTextSize
+  );
+  static final middleBoldText = TextStyle(
     color: DBColors.textValue,
-    fontSize: normalTextSize,
+    fontSize: middleTextSize,
     fontWeight: FontWeight.bold
   );
   static final middleGreyText = TextStyle(
@@ -55,4 +68,5 @@ class DBTextStyle {
     fontWeight: FontWeight.bold,
     color: DBColors.textPrimaryValue,
   );
+
 }
