@@ -12,27 +12,29 @@ class DoubanTabbarWidget extends StatefulWidget {
   final List<Widget> tabViews;
   final double tabHeadHeight;
   final ValueChanged<int> onPageChanged;
-  // final Color backgroundColor;
+  final Color backgroundColor;
   final Color indicatorColor;
   // final Color unselectedLabelColor;
   // final Color labelColor;
   final TextStyle labelStyle;
   final TextStyle unselectedLabelStyle;
+  final EdgeInsets lablePadding;
 
-  const DoubanTabbarWidget({
-    Key key,
-    this.type = TabType.bottom,
-    @required this.tabItems,
-    @required this.tabViews,
-    this.tabHeadHeight = 44.0,
-    this.onPageChanged,
-    // this.backgroundColor,
-    this.indicatorColor,
-    // this.unselectedLabelColor,
-    // this.labelColor,
-    this.labelStyle,
-    this.unselectedLabelStyle
-  }) : super(key: key);
+  const DoubanTabbarWidget(
+      {Key key,
+      this.type = TabType.bottom,
+      @required this.tabItems,
+      @required this.tabViews,
+      this.tabHeadHeight = 44.0,
+      this.onPageChanged,
+      this.backgroundColor = Colors.white,
+      this.indicatorColor,
+      // this.unselectedLabelColor,
+      // this.labelColor,
+      this.labelStyle,
+      this.unselectedLabelStyle,
+      this.lablePadding})
+      : super(key: key);
 
   @override
   _DoubanTabbarWidgetState createState() => _DoubanTabbarWidgetState();
@@ -81,6 +83,7 @@ class _DoubanTabbarWidgetState extends State<DoubanTabbarWidget>
           width: ScreenUtil().screenWidth,
           alignment: AlignmentDirectional.bottomCenter,
           decoration: BoxDecoration(
+            color: widget.backgroundColor,
             border: Border(
               bottom: BorderSide(color: DBColors.borderValue, width: .3),
             ),
@@ -91,18 +94,22 @@ class _DoubanTabbarWidgetState extends State<DoubanTabbarWidget>
             isScrollable: true,
             indicatorColor:
                 widget.indicatorColor ?? Theme.of(context).indicatorColor,
-            indicatorWeight:2.0,
+            indicatorWeight: 2.0,
             indicatorSize: TabBarIndicatorSize.label,
-            labelPadding: EdgeInsets.only(
-              top: ScreenUtil().setWidth(15),
-              left: ScreenUtil().setWidth(55),
-              right: ScreenUtil().setWidth(55),
-              bottom: ScreenUtil().setWidth(15),
-            ),
+            labelPadding: widget.lablePadding == null
+                ? EdgeInsets.only(
+                    top: ScreenUtil().setWidth(15),
+                    left: ScreenUtil().setWidth(55),
+                    right: ScreenUtil().setWidth(55),
+                    bottom: ScreenUtil().setWidth(15),
+                  )
+                : widget.lablePadding,
             labelColor: widget.labelStyle?.color,
             unselectedLabelColor: widget.unselectedLabelStyle?.color,
-            labelStyle: widget.labelStyle ?? Theme.of(context).primaryTextTheme.bodyText1,
-            unselectedLabelStyle: widget.unselectedLabelStyle ?? Theme.of(context).primaryTextTheme.bodyText1,
+            labelStyle: widget.labelStyle ??
+                Theme.of(context).primaryTextTheme.bodyText1,
+            unselectedLabelStyle: widget.unselectedLabelStyle ??
+                Theme.of(context).primaryTextTheme.bodyText1,
           ),
         ),
         Expanded(

@@ -6,6 +6,8 @@ import 'package:flutter_douban/model/topic_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oktoast/oktoast.dart';
 
+// TODO: 这个listitem还有很多细节要扣，现在不想扣了，去做别的了，以后再回来扣，特别是图片部分。
+
 class ListItem extends StatelessWidget {
   RecommendModel item;
   AvatarDisplay displayType;
@@ -91,7 +93,9 @@ class ListItem extends StatelessWidget {
   // 话题
   Widget _renderTopic(TopicModel topic) {
     return Container(
-      padding: EdgeInsets.all(ScreenUtil().setWidth(10)),
+      padding: EdgeInsets.symmetric(
+          vertical: ScreenUtil().setWidth(10),
+          horizontal: ScreenUtil().setWidth(20)),
       decoration: BoxDecoration(
         color: DBColors.tagBgValue,
         borderRadius: BorderRadius.circular(ScreenUtil().setWidth(48)),
@@ -104,6 +108,7 @@ class ListItem extends StatelessWidget {
             size: 20,
             color: DBColors.textPrimaryValue.withOpacity(.8),
           ),
+          DBGaps.hGap10,
           Text(
             topic.name,
             style: DBTextStyle.smallerPrimayText,
@@ -116,25 +121,78 @@ class ListItem extends StatelessWidget {
   // 图片集
   Widget _renderImages(BuildContext context) {
     if (item.images.length == 1) {
-      return Container();
-    }
-    if (item.images.length == 4) {
-      return Container();
+      // Image image = Image.network(item.images[0]);
+      // image.image.resolve(ImageConfiguration()).addListener(
+      //   ImageStreamListener((ImageInfo info, bool _) {
+      //     if (info.image.width >= info.image.height) {
+      //       double size = ((MediaQuery.of(context).size.width -
+      //                       ScreenUtil().setWidth(100)) /
+      //                   3) *
+      //               2 +
+      //           ScreenUtil().setWidth(10);
+      //       // singleWidth = size;
+      //     } else {
+      //       double size = ((MediaQuery.of(context).size.width -
+      //               ScreenUtil().setWidth(90)) /
+      //           2);
+      //       // singleWidth = size;
+      //     }
+      //   }),
+      // );
+       double size = ((MediaQuery.of(context).size.width -
+                            ScreenUtil().setWidth(100)) /
+                        3) *
+                    2 +
+                ScreenUtil().setWidth(10);
+      return Container(
+            width: size,
+            // height: size,
+            child: Image.network(
+              item.images[0],
+              width: size,
+              // height: size,
+            ),
+          );
     }
     List<Widget> images = List<Widget>();
     double size =
         (MediaQuery.of(context).size.width - ScreenUtil().setWidth(100)) / 3;
-    for (int i = 0, len = item.images.length; i < len; i++) {
-      images.add(Container(
-        width: size,
-        height: size,
-        child: Image.network(
-          item.images[i],
-          width: size,
-          height: size,
-        ),
-      ));
+    if (item.images.length == 4) {
+      for (int i = 0, len = item.images.length; i < len; i++) {
+        if (i == 2) {
+          images.add(Container(
+            width: size,
+            height: size,
+          ));
+        }
+        images.add(
+          Container(
+            width: size,
+            height: size,
+            child: Image.network(
+              item.images[i],
+              width: size,
+              height: size,
+            ),
+          ),
+        );
+      }
+    } else {
+      for (int i = 0, len = item.images.length; i < len; i++) {
+        images.add(
+          Container(
+            width: size,
+            height: size,
+            child: Image.network(
+              item.images[i],
+              width: size,
+              height: size,
+            ),
+          ),
+        );
+      }
     }
+
     return Wrap(
       spacing: ScreenUtil().setWidth(10),
       runSpacing: ScreenUtil().setWidth(10),
@@ -170,7 +228,6 @@ class ListItem extends StatelessWidget {
   // 底部操作栏目
   Widget _renderOperationBottom() {
     return Container(
-      color: Colors.red,
       height: ScreenUtil().setWidth(70),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -188,6 +245,7 @@ class ListItem extends StatelessWidget {
     List<Widget> widgets = List<Widget>();
     widgets.add(_renderAvatar(item.author));
     widgets.add(DBGaps.vGap20);
+    // widgets.add(DBGaps.vGap20);
     if (item.topic != null) {
       widgets.add(_renderTopic(item.topic));
       widgets.add(DBGaps.vGap20);

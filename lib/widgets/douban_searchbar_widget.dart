@@ -25,7 +25,7 @@ class DoubanSearchBarWidget extends StatefulWidget {
       this.searchRight,
       this.searchTapClick,
       this.searchBoxRightTapClick,
-      this.searchRightTapClick})
+      this.searchRightTapClick,})
       : super(key: key);
 
   @override

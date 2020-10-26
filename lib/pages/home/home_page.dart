@@ -96,6 +96,8 @@ class _HomePageState extends State<HomePage>
     ];
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        shadowColor: Colors.transparent,
         title: SearchBar(hintText: '我的2020上半年总结'),
       ),
       body: DoubanTabbarWidget(

@@ -66,7 +66,7 @@ class _SearchBarState extends State<SearchBar> {
               Icon(
                 Icons.mail_outline_rounded,
                 size: 23,
-                color: DBColors.writeValue,
+                color: widget.backgroundColor != DBColors.writeValue ?  DBColors.textGreyValue : DBColors.writeValue,
               ),
               Positioned(
                 right: 0,

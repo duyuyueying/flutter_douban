@@ -30,7 +30,7 @@ class DoubanTabbarWidget extends StatefulWidget {
 }
 
 class _DoubanTabbarWidgetState extends State<DoubanTabbarWidget> {
-  int _index = 0;
+  int _index = 1;
 
   @override
   void dispose() {
